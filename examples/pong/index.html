@@ -1,50 +1,65 @@
-<hmtl>
+<html>
   <head>
-    <script src="view-source:http://localhost:12321/api/einstein-1.0.js"></script>
+    <script src="http://10.0.1.23:12321/api/einstein-1.0.js"></script>
 
-    <script src="pitch.js"></script>
-    <script src="paddle.js"></script>
-    <script src="ball.js"></script>
+    <script src="scenes/pitch.js"></script>
+    <script src="scenes/lobby.js"></script>
+    <script src="game-objects/paddle.js"></script>
+    <script src="game-objects/ball.js"></script>
+    <script src="pong-renderer.js"></script>
 
     <script>
 
-      function gameLoaded() {
-        var div = document.getElementById("bla")
-        console.log(game.scene.getObjectsByType("Paddle"))
-        window.setInterval(function() {
-          div.innerHTML = game.scene.paddle_left.y + " " + game.scene.paddle_right.y
-        })
-      }
-
       var game;
+
       function init() {
-
-        game = new Game(gameLoaded, "Pitch", {width: 100, height: 100});
-        game._connect("10.0.1.23:8080", "test", document.location.hash)
-
+        game = new Game("PongRenderer", "Lobby");
+        game.connect("10.0.1.23:8080", document.location.hash)
       }
-
-      function restart() {
-        game._env.socket.close()
-        window.setTimeout(function() {
-          document.location.reload();
-        }, 500)
-      }
-
-
 
     </script>
+    <style type="text/css">
+      html, body {
+        min-height: 100%;
+        font-family: sans-serif;
+      }
+
+      .center {
+        background: #777;
+        width: 400px;
+        height: 300px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -200px;
+        color: white;
+      }
+    </style>
 
   </head>
   <body onload="init()">
-    <input type="button"value="UP"
-           onmousedown="game.addInput('Move', -1)"
-           onmouseup="game.addInput('Move', 0)" >
-    <input type="button"value="DOWN"
-           onmousedown="game.addInput('Move', 1)"
-           onmouseup="game.addInput('Move', 0)" >
-    <input type="button" onclick="restart()" value="restart">
-    <div id="bla"></div>
+    <div id="pitch" class="center">
+      <canvas id="canvas" width="400" height="200"></canvas>
+      <br>
+      <br>
+      <div id="buttons">
+        <input type="button"value="UP"
+               onmousedown="game.addInput('Move', -1)"
+               onmouseup="game.addInput('Move', 0)" >
+        <input type="button"value="DOWN"
+               onmousedown="game.addInput('Move', 1)"
+               onmouseup="game.addInput('Move', 0)" >
+      </div>
+      <div id="waiting">You're just watching</div>
+    </div>
+    <div id="lobby" class="center">
+      <br><br><br>Waiting for another player
+    </div>
+    <div id="loading" class="center" style="display: block">
+      <br><br>Loading game
+    </div>
 
   </body>
-</hmtl>
+</html>

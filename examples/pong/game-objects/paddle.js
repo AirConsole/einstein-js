@@ -1,8 +1,9 @@
 class Paddle extends GameObject {
   awake(args) {
     this.x = args.x;
-    this.y = 50
-    this.dy = 0
+    this.y = this.scene.height / 2;
+    this.dy = 0;
+    this.size = 20;
   }
 
   update() {

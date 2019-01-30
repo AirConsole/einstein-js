@@ -1,0 +1,50 @@
+<hmtl>
+  <head>
+    <script src="view-source:http://localhost:12321/api/einstein-1.0.js"></script>
+
+    <script src="pitch.js"></script>
+    <script src="paddle.js"></script>
+    <script src="ball.js"></script>
+
+    <script>
+
+      function gameLoaded() {
+        var div = document.getElementById("bla")
+        console.log(game.scene.getObjectsByType("Paddle"))
+        window.setInterval(function() {
+          div.innerHTML = game.scene.paddle_left.y + " " + game.scene.paddle_right.y
+        })
+      }
+
+      var game;
+      function init() {
+
+        game = new Game(gameLoaded, "Pitch", {width: 100, height: 100});
+        game._connect("10.0.1.23:8080", "test", document.location.hash)
+
+      }
+
+      function restart() {
+        game._env.socket.close()
+        window.setTimeout(function() {
+          document.location.reload();
+        }, 500)
+      }
+
+
+
+    </script>
+
+  </head>
+  <body onload="init()">
+    <input type="button"value="UP"
+           onmousedown="game.addInput('Move', -1)"
+           onmouseup="game.addInput('Move', 0)" >
+    <input type="button"value="DOWN"
+           onmousedown="game.addInput('Move', 1)"
+           onmouseup="game.addInput('Move', 0)" >
+    <input type="button" onclick="restart()" value="restart">
+    <div id="bla"></div>
+
+  </body>
+</hmtl>

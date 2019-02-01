@@ -1,4 +1,4 @@
-class Lobby extends Scene {
+class Lobby extends Einstein.Scene {
   awake(args) {}
 
   update() {}

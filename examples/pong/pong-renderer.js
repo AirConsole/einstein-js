@@ -1,4 +1,4 @@
-class PongRenderer extends Renderer {
+class PongRenderer extends Einstein.Renderer {
   awake() {
     document.getElementById("loading").style.display = "none";
     this.pitch_ctx = document.getElementById("canvas").getContext("2d");
@@ -51,6 +51,10 @@ class PongRenderer extends Renderer {
     this.pitch_ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, false);
     this.pitch_ctx.fill();
     this.pitch_ctx.closePath();
+  }
+
+  onPlayersChanged() {
+    console.log("players changed")
   }
 
 }

@@ -1,4 +1,4 @@
-class Paddle extends GameObject {
+class Paddle extends Einstein.GameObject {
   awake(args) {
     this.x = args.x;
     this.y = this.scene.height / 2;

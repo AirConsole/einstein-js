@@ -8,7 +8,7 @@ class Pitch extends Einstein.Scene {
     this.paddles = [
         this.createObject("Paddle", {x: 10}),
         this.createObject("Paddle", {x: 390})];
-    this.createObject("Pong.Ball", {"id": "ball"});
+    this.createObject("Ball", {"id": "ball"});
     this.addInputListener("Move", "move")
 
   }
@@ -54,7 +54,7 @@ class Pitch extends Einstein.Scene {
   }
 
   spawnBall() {
-    this.createObject("Pong.Ball", {"id": "ball"});
+    this.createObject("Ball", {"id": "ball"});
   }
 
   onLeave(player) {

@@ -1,4 +1,4 @@
-class Ball extends GameObject {
+class Ball extends Einstein.GameObject {
   awake(args) {
     this.x = 100;
     this.y = 50;

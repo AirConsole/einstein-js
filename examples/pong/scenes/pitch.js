@@ -59,7 +59,7 @@ class Pitch extends Einstein.Scene {
 
   onLeave(player) {
     if (this.player_to_paddle[player] !== undefined) {
-      this.changeScene("Lobby");
+      this.engine.changeScene("Lobby");
     }
   }
 }

@@ -14,12 +14,12 @@ class PongRenderer extends Einstein.Renderer {
       this.pitch_ctx.fillStyle = "black";
       this.pitch_ctx.fillRect(0,0, this.scene.width, this.scene.height)
       this.renderPaddle(this.scene.paddles[0],
-          this.scene.player_to_paddle[this.game.player] == 0);
+          this.scene.player_to_paddle[this.engine.player] == 0);
       this.renderPaddle(this.scene.paddles[1],
-          this.scene.player_to_paddle[this.game.player] == 1);
+          this.scene.player_to_paddle[this.engine.player] == 1);
       this.renderBall(this.scene.getObject("ball"));
 
-      if (this.scene.player_to_paddle[this.game.player] !== undefined) {
+      if (this.scene.player_to_paddle[this.engine.player] !== undefined) {
         this.buttons.style.display = "block"
         this.waiting.style.display = "none"
       } else {

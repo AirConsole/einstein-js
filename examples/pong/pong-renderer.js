@@ -52,9 +52,4 @@ class PongRenderer extends Einstein.Renderer {
     this.pitch_ctx.fill();
     this.pitch_ctx.closePath();
   }
-
-  onPlayersChanged() {
-    console.log("players changed")
-  }
-
 }

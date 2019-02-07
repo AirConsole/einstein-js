@@ -3,7 +3,7 @@ class Lobby extends Einstein.Scene {
 
   update() {}
 
-  onJoin(player) {
+  onJoin(player, data) {
     var players = this.engine.getPlayers();
     if (players.length >= 2) {
       var player_to_paddle = {};

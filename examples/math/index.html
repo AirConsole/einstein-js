@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <script src="http://10.0.1.23:12321/api/einstein-1.0.js"></script>
+
+
+
+    <script>
+
+  class MyScene extends Einstein.Scene {
+    update() {
+      this.random = Math.random();
+      this.sin = Math.sin(0.5);
+      this.ts = new Date().getTime();
+      this.engine.freeze();
+    }
+  }
+
+  class MyRenderer extends Einstein.Renderer {
+    awake() {
+      this.output = document.getElementById("output")
+    }
+
+    render() {
+
+      var rows = [
+        ["", "Math.random()", "Math.sin(0.5)", "new Date().getTime()"],
+        ["Game", this.scene.random, this.scene.sin, this.scene.ts],
+        ["Renderer", Math.random(), Math.sin(0.5), new Date().getTime()]
+      ]
+
+      var html = "<table cellpadding='5'>";
+      for (var r = 0; r < rows.length; ++r) {
+        html += "<tr><td>" + rows[r].join("</td><td>") + "</td></tr>"
+      }
+      html += "</table>"
+      html += "Latency " + this.game.latency();
+      this.output.innerHTML = html;
+    }
+  }
+
+  var game;
+
+  function init() {
+    game = new Einstein.Game("MyRenderer", "MyScene");
+    game.connect("10.0.1.23:8080", document.location.hash);
+  }
+
+  function MyDate () {
+    var internal = new Date();
+    for (var x in Object.getOwnPropertyNames(internal)) {
+      this[x] = internal;
+    }
+  }
+
+
+
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="output"></div>
+    <button onclick="game.addInput('update')">Update</button>
+  </body>
+</html>

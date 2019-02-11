@@ -5,6 +5,7 @@ class PongRenderer extends Einstein.Renderer {
     this.lobby_element = document.getElementById("lobby")
     this.buttons = document.getElementById("buttons")
     this.waiting = document.getElementById("waiting")
+    this.latency = document.getElementById("latency");
 
   }
 
@@ -30,6 +31,7 @@ class PongRenderer extends Einstein.Renderer {
     } else {
       this.lobby_element.style.display = "block";
     }
+    this.latency.innerHTML = game.latency() + "ms"
   }
 
   renderPaddle(paddle, is_player) {

@@ -1,0 +1,4 @@
+{
+  "src": ["src/my-renderer.js", "src/my-scene.js"],
+  "output": "bin/game.js"
+}

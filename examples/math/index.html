@@ -1,9 +1,6 @@
 <html>
   <head>
     <script src="http://10.0.1.23:12321/api/einstein-1.0.js"></script>
-
-
-
     <script>
 
   class MyScene extends Einstein.Scene {
@@ -44,15 +41,6 @@
     game = new Einstein.Game("MyRenderer", "MyScene");
     game.connect("10.0.1.23:8080", document.location.hash);
   }
-
-  function MyDate () {
-    var internal = new Date();
-    for (var x in Object.getOwnPropertyNames(internal)) {
-      this[x] = internal;
-    }
-  }
-
-
 
     </script>
   </head>

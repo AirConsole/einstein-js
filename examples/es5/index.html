@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <script src="http://10.0.1.23:12321/api/einstein-1.0.js"></script>
+    <script src="bin/game.js"></script>
+    <script>
+      function init() {
+        var game = new Einstein.Game("MyRenderer", "MyScene");
+        game.connect("10.0.1.23:8080", document.location.hash);
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="output"></div>
+  </body>
+</html>
